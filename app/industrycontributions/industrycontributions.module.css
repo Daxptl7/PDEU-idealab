@@ -1,0 +1,217 @@
+/* src/app/industrycontributions/industrycontributions.module.css */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- 1. HEADER (Matches Events) --- */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  /* Or 100% if we want full width like events, but keeping it subtle is nice */
+  height: 4px;
+  background-color: #A6192E;
+  margin-top: 20px;
+}
+
+/* --- 2. GRID (Strict 3 Columns) --- */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  /* Strict 3 columns on large screens */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Responsive: 2 cols on tablet, 1 on mobile */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- 3. CARD (Matches Events Style) --- */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(166, 25, 46, 0.1);
+  z-index: 10;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #A6192E;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardImageWrapper {
+  height: 180px;
+  position: relative;
+  background-color: #ffffff;
+  /* Changed to white for logos */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cardImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Logos should be contained */
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.1);
+}
+
+.placeholderImg {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardContent {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.metaTop {
+  font-size: 11px;
+  font-weight: 700;
+  color: #A6192E;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  /* Date on right */
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.contributionLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* Loading & Empty States */
+.loadingContainer {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #888;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #A6192E;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 50px;
+  color: #999;
+  font-size: 1.1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}

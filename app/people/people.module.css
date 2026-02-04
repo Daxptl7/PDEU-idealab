@@ -1,0 +1,281 @@
+/* src/app/people/people.module.css */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- HEADER (Redesigned: Left Aligned + Red Line) --- */
+.header {
+  text-align: left;
+  /* CHANGED: Center -> Left */
+  margin-bottom: 60px;
+  padding: 0 20px;
+
+  /* Align the header container with the grid below */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 3rem;
+  /* Slightly larger for impact */
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0;
+  /* CHANGED: Removed 'auto' margin to keep it left */
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #A6192E;
+}
+
+/* THE RED SEPARATOR LINE */
+.header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  /* Spans the full width of the container */
+  height: 2px;
+  /* Thickness */
+  background-color: #A6192E;
+  /* PDEU Red */
+  margin-top: 40px;
+  /* Spacing between text and line */
+  opacity: 0.8;
+}
+
+
+/* --- SECTIONS --- */
+.section {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 25px;
+  border-left: 4px solid #A6192E;
+  padding-left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- GRID LAYOUTS --- */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.grid .card {
+  flex: 0 1 340px;
+}
+
+.leadershipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+/* --- LEVITATING CARD DESIGN (Kept exactly as requested) --- */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 110px;
+  overflow: hidden;
+  position: relative;
+
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* HOVER STATE: Levitation */
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(166, 25, 46, 0.1);
+  z-index: 10;
+}
+
+/* Red Line (Right Side) */
+.card::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #A6192E;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Image (Left) */
+.imageWrapper {
+  width: 100px;
+  height: 100%;
+  flex-shrink: 0;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.personImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .personImg {
+  transform: scale(1.1);
+}
+
+/* Info (Right) */
+.info {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.dept {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #bbb;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #A6192E;
+  margin-bottom: 8px;
+}
+
+.bio {
+  display: none;
+}
+
+/* --- BUTTONS --- */
+.socialRow {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: transparent;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background-color: #111;
+  border-color: #111;
+  color: white;
+}
+
+.linkedInBtn:hover {
+  background-color: #0077b5;
+  border-color: #0077b5;
+  color: white;
+}
+
+/* --- LEADERSHIP OVERRIDES --- */
+.leadershipGrid .card {
+  height: 180px;
+  flex: 0 1 420px;
+  border: 1px solid #e0e0e0;
+}
+
+.leadershipGrid .imageWrapper {
+  width: 150px;
+}
+
+.leadershipGrid .name {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.leadershipGrid .role {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.leadershipGrid .bio {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 11px;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .grid .card {
+    width: 100%;
+    flex: 1 1 auto;
+    max-width: none;
+  }
+
+  .leadershipGrid .card {
+    flex: 1 1 100%;
+    height: auto;
+    min-height: 160px;
+  }
+}

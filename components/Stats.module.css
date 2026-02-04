@@ -1,0 +1,55 @@
+/* src/components/Stats.module.css */
+
+.statsSection {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Subtle shadow to lift it */
+  position: relative;
+  z-index: 10; /* Ensures it sits above the fixed hero image if margins overlap */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around; /* Spreads items evenly */
+  flex-wrap: wrap; /* Good for mobile */
+  gap: 40px;
+}
+
+.statItem {
+  text-align: center;
+  flex: 1; /* Each item takes equal width */
+  min-width: 200px;
+}
+
+.number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #A6192E; /* PDEU Red */
+  display: block;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Add a separator line between items on Desktop */
+.statItem:not(:last-child) {
+  border-right: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .statItem:not(:last-child) {
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+  }
+}

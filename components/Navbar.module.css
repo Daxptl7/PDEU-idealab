@@ -1,0 +1,249 @@
+/* src/components/Navbar.module.css */
+
+/* --- 1. MAIN CONTAINER --- */
+.headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  font-family: 'Montserrat', sans-serif;
+
+  /* Gradient Overlay (Permanent) */
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0) 100%);
+
+  /* Smooth Padding Transition */
+  transition: padding 0.4s ease;
+}
+
+/* THE SMOOTH RED LAYER (Hidden by default) */
+.headerContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #A6192E;
+  /* PDEU Red */
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* --- 2. LAYOUT --- */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 20px;
+  /* Adjusted padding: Vertical 10px, Horizontal 20px */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 90px;
+  /* Restoring height */
+}
+
+/* --- 3. LOGO --- */
+
+/* src/components/Navbar.module.css */
+
+/* LOGO CONTAINER */
+.logo {
+  display: flex;
+  align-items: center;
+  grid-column: 1;
+  justify-self: start;
+  /* height: 100%; Removed */
+}
+
+/* Wrapper for the two logos and line */
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  /* Spacing between elements */
+  text-decoration: none;
+  /* Removes underline from link */
+}
+
+/* The Vertical Line Separator */
+.separator {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.7;
+  /* Make it slightly transparent so it's not distracting */
+  margin-bottom: 4px;
+  /* Optical alignment */
+}
+
+/* --- 4. MENU LINKS --- */
+/* Ensure Menu is centered in the middle column */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  grid-column: 2;
+  justify-self: center;
+  margin-left: 60px;
+  /* Slight shift to right */
+}
+
+.menuLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.4s ease;
+  color: inherit;
+}
+
+.stackedLink {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Hover Line Animation */
+.menuLink::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+}
+
+.menuLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* =========================================
+   STATE MANAGEMENT 
+   ========================================= */
+
+/* STATE A: TRANSPARENT (At Top) */
+.transparent {
+  /* Added a little top padding for "breathing room" when transparent */
+  padding-top: 15px;
+}
+
+.transparent .menuLink {
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.transparent .menuLink::after {
+  background-color: #ffffff;
+}
+
+/* STATE B: SCROLLED (Red Background) */
+.scrolled {
+  padding-top: 0;
+  /* Compact look when scrolled */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Reveal Red Background */
+.scrolled::before {
+  opacity: 1;
+}
+
+.scrolled .menuLink {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.scrolled .menuLink::after {
+  background-color: #ffffff;
+}
+
+
+/* --- 5. HAMBURGER ICON (Desktop Default: Hidden) --- */
+.hamburger {
+  display: none, ;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2000;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* =========================================
+   MEDIA QUERIES (Mobile Responsive)
+   ========================================= */
+@media (max-width: 768px) {
+  .container {
+    justify-content: right;
+  }
+
+  .logo {
+    position: static;
+    transform: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #A6192E;
+    /* PDEU Red Background */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* When Open */
+  .showMenu {
+    height: auto;
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Animate Hamburger Bars */
+  .barOpen:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .barOpen:nth-child(2) {
+    opacity: 0;
+  }
+
+  .barOpen:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}

@@ -1,0 +1,327 @@
+/* src/app/events/events.module.css */
+
+/* ... (Keep MainContainer and Header styles as they are) ... */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-top: 100px; 
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- 1. HEADER (Left Aligned + Red Line) --- */
+.header {
+  max-width: 1200px;
+  /* Reduced margin to bring tabs closer, matching Gallery */
+  margin: 0 auto 30px auto;
+  padding: 0 20px;
+  text-align: left; 
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* The Red Separator Line */
+.header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #A6192E; 
+  margin-top: 40px;
+  opacity: 0.6;
+}
+
+/* --- 2. TABS (Center Underline Effect) --- */
+.tabGroup {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 50px;
+  /* Removed border-bottom for cleaner look */
+}
+
+.tabBtn {
+  background: transparent;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 15px 10px; /* Adjusted padding */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tabBtn:hover {
+  color: #111;
+}
+
+/* THE CENTER UNDERLINE SETUP */
+.tabBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  /* Start exactly in the middle */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Start invisible (0 width) */
+  width: 0%;
+  height: 3px;
+  background-color: #A6192E;
+  /* Smooth expansion animation */
+  transition: width 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(166, 25, 46, 0.3);
+}
+
+/* Hover State: Expand */
+.tabBtn:hover::after {
+  width: 100%;
+}
+
+/* Active State: Red Text & Full Width Line */
+.activeTab {
+  color: #A6192E;
+}
+
+.activeTab::after {
+  width: 100%;
+}
+
+/* ... (Keep GRID, CARD, and MODAL styles exactly as they were) ... */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  /* CHANGED: Reduced from 300px to 250px to fit 4 items */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px; /* Reduced gap from 30px */
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(166, 25, 46, 0.1);
+  z-index: 10;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #A6192E;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 20;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardImageWrapper {
+  height: 160px; /* CHANGED: Reduced from 200px */
+  position: relative;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.1);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cardContent {
+  padding: 15px; /* CHANGED: Reduced from 25px */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.metaTop {
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dateHighlight {
+  color: #A6192E;
+}
+
+.cardTitle {
+  font-size: 1.1rem; /* CHANGED: Reduced from 1.3rem */
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  font-size: 12px; /* CHANGED: Slightly smaller text */
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardFooter {
+  margin-top: auto;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f5f5f5;
+  color: #333;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.card:hover .actionBtn {
+  background-color: #111;
+  color: white;
+}
+
+/* --- MODAL --- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  max-height: 85vh;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  z-index: 2001;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 50;
+  background: white;
+  color: #111;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  /* CHANGED: Reduced shadow intensity (was 0.2 opacity) */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+  /* CHANGED: Smoother transition for rotation */
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s;
+}
+
+.closeBtn:hover {
+  background-color: #f5f5f5;
+  /* CHANGED: Added rotation for the "small animation" effect */
+  transform: rotate(90deg) scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .modalContent { flex-direction: column; overflow-y: scroll; }
+  .modalLeft { height: 250px; width: 100%; }
+  .modalRight { width: 100%; }
+}
+
+.closeBtn { position: absolute; top: 15px; right: 15px; z-index: 10; background: rgba(0,0,0,0.1); border-radius: 50%; padding: 5px; border:none; cursor: pointer;}
+.modalLeft { width: 50%; background: #eee; position: relative; }
+.modalImg { width: 100%; height: 100%; object-fit: cover; }
+.modalRight { width: 50%; padding: 40px; display: flex; flex-direction: column; overflow-y: auto; }
+.modalTitle { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+.modalMeta { display: flex; gap: 15px; color: #666; font-size: 13px; margin-bottom: 20px; }
+.modalDesc { line-height: 1.6; color: #555; margin-bottom: 30px; }
+.primaryBtn { display: block; width: 100%; padding: 15px; background: #111; color: white; text-align: center; border-radius: 8px; font-weight: 600; text-decoration: none; margin-bottom: 10px; }
+.secondaryBtn { display: block; width: 100%; padding: 15px; background: #f0f7ff; color: #0077b5; text-align: center; border-radius: 8px; font-weight: 600; text-decoration: none; }

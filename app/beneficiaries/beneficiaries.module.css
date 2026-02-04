@@ -1,0 +1,194 @@
+/* src/app/beneficiaries/beneficiaries.module.css */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-top: 120px; /* Space for fixed navbar */
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- HEADER --- */
+.header {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: #fff0f2; /* Light Red tint */
+  color: #A6192E;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(166, 25, 46, 0.1);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #A6192E;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* --- GRID --- */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 Columns */
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* --- CARD --- */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: rgba(166, 25, 46, 0.1);
+}
+
+.iconBox {
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  background-color: #f8f8f8;
+  color: #555;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* On hover, icon turns Red */
+.card:hover .iconBox {
+  background-color: #A6192E;
+  color: white;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.cardContent {
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.cardSubtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #A6192E;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.cardDesc {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- CTA SECTION (Bottom) --- */
+.ctaSection {
+  max-width: 900px;
+  margin: 80px auto 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.ctaBox {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 24px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative top border */
+.ctaBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #A6192E;
+}
+
+.ctaTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.ctaText {
+  color: #666;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 35px;
+  background-color: #A6192E;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.ctaBtn:hover {
+  background-color: #851222;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(166, 25, 46, 0.2);
+}

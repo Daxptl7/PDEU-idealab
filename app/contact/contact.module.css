@@ -1,0 +1,256 @@
+/* src/app/contact/contact.module.css */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+  padding-top: 100px; /* Space for Navbar */
+}
+
+/* --- HEADER --- */
+.header {
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  color: #A6192E; /* PDEU Red */
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- GRID LAYOUT --- */
+.gridContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Info is slightly smaller than Form */
+  gap: 50px;
+  align-items: start;
+}
+
+/* Responsive Grid */
+@media (max-width: 900px) {
+  .gridContainer { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* --- LEFT COLUMN: CONTACT INFO --- */
+.infoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.infoCard {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.infoTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 25px;
+  border-left: 4px solid #A6192E;
+  padding-left: 15px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.infoItem:last-child { margin-bottom: 0; }
+
+.iconBox {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: #fff0f2; /* Light Red tint */
+  color: #A6192E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itemContent h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.itemContent p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Map Container */
+.mapContainer {
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.mapFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.2); /* Slight grayscale for professional look */
+}
+
+/* --- RIGHT COLUMN: BOOKING FORM --- */
+.formCard {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.formIcon { color: #A6192E; }
+
+.formGroup { margin-bottom: 20px; }
+
+.label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fcfcfc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.textarea { resize: vertical; min-height: 120px; }
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: #A6192E;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(166, 25, 46, 0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .row { grid-template-columns: 1fr; gap: 0; }
+  .formCard { padding: 25px; }
+}
+
+/* Submit Button */
+.submitBtn {
+  width: 100%;
+  padding: 16px;
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background-color: #A6192E;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success Message */
+.successMessage {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.checkIcon {
+  width: 80px;
+  height: 80px;
+  background-color: #e6f7ed;
+  color: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.resetBtn {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  color: #A6192E;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}

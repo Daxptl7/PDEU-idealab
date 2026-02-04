@@ -1,0 +1,245 @@
+/* src/app/gallery/gallery.module.css */
+
+.mainContainer {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding-bottom: 80px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* --- HEADER --- */
+.header {
+  max-width: 1200px;
+  margin: 0 auto 30px auto; 
+  padding: 100px 20px 0 20px; 
+  text-align: left;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Page Header Red Line */
+.header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #A6192E;
+  margin-top: 40px;
+  opacity: 0.6;
+}
+
+/* --- FILTER BUTTONS (Center Expansion Effect) --- */
+.filterContainer {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center; 
+  gap: 40px; 
+}
+
+.filterBtn {
+  background: transparent;
+  border: none;
+  padding: 15px 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #888; 
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.filterBtn:hover {
+  color: #111;
+}
+
+/* THE CENTER UNDERLINE SETUP */
+.filterBtn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  /* Start exactly in the middle */
+  left: 50%;
+  transform: translateX(-50%);
+  /* Start with 0 width (invisible) */
+  width: 0%;
+  height: 3px;
+  background-color: #A6192E;
+  /* Smooth expansion animation */
+  transition: width 0.3s ease-in-out;
+  box-shadow: 0 2px 10px rgba(166, 25, 46, 0.3);
+}
+
+/* Hover State: Expand from center */
+.filterBtn:hover::after {
+  width: 100%;
+}
+
+/* Active State: Stay expanded & Red Text */
+.activeFilter {
+  color: #A6192E; 
+}
+
+.activeFilter::after {
+  width: 100%;
+}
+
+
+/* --- MASONRY GRID (Unchanged) --- */
+.masonryGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .masonryGrid { column-count: 2; }
+}
+
+@media (max-width: 640px) {
+  .masonryGrid { column-count: 1; }
+}
+
+/* --- IMAGE CARD (Unchanged) --- */
+.card {
+  break-inside: avoid; 
+  margin-bottom: 20px; 
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: zoom-in;
+  background-color: #ddd;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.gridImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.card:hover .gridImg {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.overlayTitle {
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transform: translateY(10px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .overlayTitle {
+  transform: translateY(0);
+}
+
+/* --- FULLSCREEN MODAL (Unchanged) --- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999; 
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 100;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.modalImg {
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+.modalCaption {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.modalTitle {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.modalCategory {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+} 
