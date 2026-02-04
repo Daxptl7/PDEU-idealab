@@ -80,6 +80,13 @@
   /* Optical alignment */
 }
 
+/* Adjust Logo Size for Image Component */
+.navLogo {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
 /* --- 4. MENU LINKS --- */
 /* Ensure Menu is centered in the middle column */
 .menu {
@@ -173,7 +180,7 @@
 
 /* --- 5. HAMBURGER ICON (Desktop Default: Hidden) --- */
 .hamburger {
-  display: none, ;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -196,18 +203,57 @@
 /* =========================================
    MEDIA QUERIES (Mobile Responsive)
    ========================================= */
+/* MOBILE RESPONSIVE NAV */
 @media (max-width: 768px) {
   .container {
-    justify-content: right;
+    display: flex;
+    /* Switch from Grid to Flex */
+    justify-content: flex-end;
+    /* Align items to the RIGHT */
+    align-items: center;
+    gap: 20px;
   }
 
+  /* HIDE LOGO INITIALLY ON MOBILE (Transparent State) */
   .logo {
     position: static;
     transform: none;
+    margin-right: auto;
+    margin-left: 0;
+
+    /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+  }
+
+  /* SHOW LOGO WHEN SCROLLED (Red State) */
+  /* We use :global(.scrolled) to target the parent class set in React */
+  :global(.scrolled) .logo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Mobile specific logo sizing */
+  .navLogo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+  }
+
+  .separator {
+    font-size: 18px;
+    margin: 0 4px;
+    display: block;
+    color: white;
   }
 
   .hamburger {
     display: flex;
+    /* aligned to right by flex-end of container */
+    margin-left: 20px;
   }
 
   .menu {
@@ -223,6 +269,8 @@
     align-items: center;
     gap: 20px;
     padding: 0;
+    margin-left: 0;
+    /* Reset desktop margin */
     transition: all 0.4s ease-in-out;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }

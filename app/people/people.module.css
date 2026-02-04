@@ -267,15 +267,68 @@
 
 /* MOBILE */
 @media (max-width: 600px) {
-  .grid .card {
+
+  .grid,
+  .leadershipGrid {
+    padding: 0 10px;
+    /* Slight side padding for the grid container */
+  }
+
+  /* Standardize all cards to Stack Vertically */
+  .grid .card,
+  .leadershipGrid .card {
+    flex-direction: column;
+    /* Image Top, Info Bottom */
+    height: auto;
+    /* Let content dictate height */
     width: 100%;
     flex: 1 1 auto;
     max-width: none;
+    min-height: unset;
+    border-radius: 16px;
+    /* Slightly more rounded for mobile feel */
   }
 
-  .leadershipGrid .card {
-    flex: 1 1 100%;
-    height: auto;
-    min-height: 160px;
+  /* Full Width Images */
+  .imageWrapper,
+  .leadershipGrid .imageWrapper {
+    width: 100%;
+    height: 320px;
+    /* Large, clear view of the person ("perfect fit") */
+  }
+
+  .personImg {
+    object-position: center top;
+    /* Focus on faces */
+  }
+
+  /* Info Section */
+  .info {
+    width: 100%;
+    padding: 20px 20px 25px 20px;
+    text-align: left;
+    /* Ensure left align */
+  }
+
+  .name {
+    font-size: 1.4rem;
+    /* Larger name for readability */
+  }
+
+  .role {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+
+  .leadershipGrid .bio {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 6;
+    /* Show more bio on mobile */
+    margin-bottom: 15px;
+  }
+
+  /* Adjust title size */
+  .title {
+    font-size: 2.2rem;
   }
 }

@@ -35,12 +35,7 @@ const Navbar = () => {
         <div className={styles.container}>
           
           {/* LOGO SECTION */}
-          <div className={styles.logo}>
-            <Link href="/" className={styles.logoGroup}>
-
-
-            </Link>
-          </div>
+          {/* LOGO SECTION REMOVED */}
 
           {/* HAMBURGER TOGGLE (Visible on Mobile) */}
           <button 
